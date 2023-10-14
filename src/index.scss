@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lucida Sans';
+  font-weight: bold;
+}
+
+// colors
+$base-color: #001524;
+$bg-color: #4F709C;
+$opera: #ECEE81;
+
+// mixin
+@mixin orange {
+  background-color: #CD5C08;
+  color: white;
+}
+
+body {
+  height: 100vh;
+  background-color: $bg-color;
+
+  display: grid;
+  place-content: center;
+}
+
+.calculator {
+  width: 400px;
+  background-color: $base-color;
+  padding-block: 40px;
+
+  display: grid;
+  place-items: center;
+  gap: 30px;
+
+  border: 10px solid white;
+  border-radius: 15px;
+
+  input {
+    width: 100%;
+    background-color: transparent;
+    color: white;
+
+    padding-right: 50px;
+    border: none;
+    outline: none;
+
+    font-size: 30px;
+    text-align: right;
+  }
+
+  .keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 60px);
+    grid-template-rows: repeat(5, 60px);
+    gap: 20px;
+
+    button {
+      color: $base-color;
+      font-size: 18px;
+      cursor: pointer;
+
+      border: none;
+      border-radius: 50%;
+
+      &:first-child {
+        grid-column: 1/3;
+        border-radius: 10px;
+        @include orange
+      }
+
+      &:last-child {
+        grid-column: 3/5;
+        border-radius: 10px;
+        @include orange
+      }
+
+      &:active {
+        transform: scale(.90);
+      }
+    }
+
+    #remove {
+      display: grid;
+      place-content: center;
+      @include orange
+    }
+
+    #dot {
+      @include orange
+    }
+
+    .opera {
+      background-color: $opera;
+      color: $base-color;
+    }
+  }
+}
